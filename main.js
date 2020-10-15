@@ -19,39 +19,43 @@ var fruits = [
   }
 ]
 
-// Query Selector
 var fruitBox = document.querySelector('.fruit-box')
 
 function render() {
-fruitBox.innerHTML = '';
+let fruitHTML = '';
 
   fruits.forEach(fruit => {
-    let fruitDiv = `
+    let fruitTitle = fruit.rotten ? `Rotten ${fruit.name}` : fruit.name;
+    
+    fruitHTML += `
       <div class="fruit">
-        <h2>${fruit.name}</h2>
+        <h2>${fruitTitle}</h2>
         <img src="${fruit.img}" />
-        <button data-id=0>Lick</button>
+        <button data-id=${fruit.id}>Lick</button>
       </div>
     `
-    fruitBox.innerHTML += fruitDiv;
+    fruitBox.innerHTML = fruitHTML;
   })
 }
 
 function addFruit(name, img, rotten) {
-  let fruit = {
+  let newFruit = {
     name,
     img,
     rotten,
-    id: fruits[fruits.length - 1].id + 1
+    id: fruits.length
   }
   
-  fruits.push(fruit);
+  fruits.push(newFruit);
+  render();
 }
 
-function removeFruit(idx) {
-  fruits.splice(idx, 1);
+function removeFruit(id) {
+  let fruitIdx = fruits.findIndex(fruit => fruit.id === id);
+  fruits.splice(fruitIdx, 1);
+  render();
 }
 
+render();
 addFruit('Banana', 'https://bit.ly/3bNpVnT', false); 
 removeFruit(0); 
-render();
