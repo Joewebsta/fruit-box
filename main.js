@@ -37,6 +37,17 @@ fruitBox.innerHTML = '';
   })
 }
 
-render()
-// addFruit('Banana', 'https://bit.ly/3bNpVnT', false)
+function addFruit(name, img, rotten) {
+  let fruit = {
+    name,
+    img,
+    rotten,
+    id: fruits[fruits.length - 1].id + 1
+  }
+  
+  fruits.push(fruit);
+}
+
+addFruit('Banana', 'https://bit.ly/3bNpVnT', false); 
 // removeFruit(0) 
+render()
