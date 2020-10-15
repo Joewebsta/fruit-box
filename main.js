@@ -56,6 +56,15 @@ function removeFruit(id) {
   render();
 }
 
+function turnRotten(e) {
+  let fruitId = Number(e.target.dataset.id);
+  let lickedFruit = fruits.find(fruit => fruit.id == fruitId);
+  lickedFruit.rotten = true;
+  render();
+}
+
 render();
 addFruit('Banana', 'https://bit.ly/3bNpVnT', false); 
 removeFruit(0); 
+
+fruitBox.addEventListener('click', turnRotten);
