@@ -48,6 +48,10 @@ function addFruit(name, img, rotten) {
   fruits.push(fruit);
 }
 
+function removeFruit(idx) {
+  fruits.splice(idx, 1);
+}
+
 addFruit('Banana', 'https://bit.ly/3bNpVnT', false); 
-// removeFruit(0) 
-render()
+removeFruit(0); 
+render();
