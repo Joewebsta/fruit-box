@@ -22,7 +22,21 @@ var fruits = [
 // Query Selector
 var fruitBox = document.querySelector('.fruit-box')
 
+function render() {
+fruitBox.innerHTML = '';
 
-// render()
+  fruits.forEach(fruit => {
+    let fruitDiv = `
+      <div class="fruit">
+        <h2>${fruit.name}</h2>
+        <img src="${fruit.img}" />
+        <button data-id=0>Lick</button>
+      </div>
+    `
+    fruitBox.innerHTML += fruitDiv;
+  })
+}
+
+render()
 // addFruit('Banana', 'https://bit.ly/3bNpVnT', false)
 // removeFruit(0) 
